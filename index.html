@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Telve — Kavrum Evi</title>
+<meta name="description" content="Telve: her partiden yalnızca 60 kilo kahve kavuran küçük bir kavrum evi. Beş kahve, hepsi 250 g.">
+<meta name="theme-color" content="#1a110e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a110e'/%3E%3Cellipse cx='32' cy='32' rx='15' ry='23' transform='rotate(25 32 32)' fill='%23c2334a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;800&family=Source+Serif+4:opsz,wght@8..60,400;600&display=swap">
+<style>
+:root{--bg:#1a110e;--bg2:#241713;--ink:#efe3d0;--ink2:rgba(239,227,208,.72);--ink3:rgba(239,227,208,.42);--line:rgba(239,227,208,.16);--cherry:#c2334a;--green:#93a35c;--pad:clamp(20px,5vw,80px);--disp:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;--body:'Source Serif 4',Georgia,serif}
+*{box-sizing:border-box}html{background:var(--bg);color:var(--ink);scroll-behavior:smooth}
+body{margin:0;font:17px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p{margin:0}h1,h2,h3{font-family:var(--disp);line-height:1;letter-spacing:-.03em;font-weight:800}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.hdr{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:calc(14px + env(safe-area-inset-top,0px)) var(--pad) 14px;transition:background .3s}
+.hdr.solid{background:rgba(26,17,14,.9);backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 24px var(--disp);letter-spacing:-.04em}
+.brand svg{width:22px;height:30px}
+.nav{display:flex;gap:26px;font:600 14px var(--disp)}.nav a{text-decoration:none;color:var(--ink2)}.nav a:hover{color:var(--ink)}
+.cart-btn{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:600 14px var(--disp)}
+.cart-btn b{display:grid;place-items:center;min-width:22px;height:22px;border-radius:99px;background:var(--cherry);font-size:12px}
+.roast{height:380vh}
+.sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:var(--pad);align-items:center;padding:92px var(--pad) 32px}
+h1{font-size:clamp(40px,6.4vw,102px);overflow:hidden}
+h1 span{display:block;animation:rise 1s cubic-bezier(.16,1,.3,1) both}h1 span:nth-child(2){animation-delay:.12s}h1 span:nth-child(3){animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}}
+.lead{max-width:48ch;margin-top:22px;color:var(--ink2)}
+.btn{display:inline-block;margin-top:22px;padding:13px 24px;border-radius:999px;background:var(--ink);color:var(--bg);font:600 15px var(--disp);text-decoration:none;border:0}
+.stages{list-style:none;margin:24px 0 0;padding:0;max-width:46ch}
+.stages li{padding:10px 0 10px 18px;border-left:2px solid var(--line);color:var(--ink3);transition:color .3s,border-color .3s}
+.stages li.on{color:var(--ink);border-color:var(--cherry)}
+.stages h3{font-size:19px;letter-spacing:-.01em}.stages h3 small{font:400 14px var(--body);margin-left:8px;opacity:.7}
+.stages p{display:none;margin-top:6px;font-size:15px;color:var(--ink2)}.stages li.on p{display:block}
+.viz{display:grid;justify-items:center;gap:14px}
+.bean{height:min(38vh,360px);width:auto;transition:transform .1s linear}.bean .b{fill:var(--bean,#93a35c)}
+.curve{width:100%;max-width:420px;overflow:visible}
+.read{display:flex;gap:44px}.read b{display:block;font:800 clamp(34px,4.2vw,58px)/1 var(--disp);letter-spacing:-.04em;font-variant-numeric:tabular-nums}.read span{font-size:14px;color:var(--ink3)}
+.coll{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--pad);align-items:center;padding:120px var(--pad);background:var(--bg2);--c:#e4c06a}
+.art{display:grid;place-items:center;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 55%,transparent),transparent);transition:background .5s}
+.art svg{width:56%;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
+.cnt{font:600 14px var(--disp);color:var(--ink3)}.cnt b{color:var(--ink)}
+#cName{font-size:clamp(38px,5.2vw,80px);margin:10px 0 6px}
+#cOrigin{color:var(--ink3);font-size:15px}#cDesc{max-width:52ch;margin:16px 0 22px;color:var(--ink2)}
+.swap>*{animation:fade .45s both}@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+dl{margin:0;max-width:520px}.row{display:grid;grid-template-columns:80px 1fr;gap:16px;padding:11px 0;border-top:1px solid var(--line)}.row:last-child{border-bottom:1px solid var(--line)}
+dt{font:600 14px var(--disp);color:var(--ink3)}dd{margin:0}
+.lvl{display:flex;align-items:center;gap:12px;margin:20px 0;font:600 14px var(--disp)}.lvl div{display:flex;gap:4px}.lvl i{width:30px;height:8px;border-radius:4px;background:var(--line)}.lvl i.on{background:var(--cherry)}.lvl span{color:var(--ink3)}
+.buy{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.buy strong{font:800 30px var(--disp);letter-spacing:-.03em}.buy .btn{margin:0;cursor:pointer}
+.ctrl{display:flex;align-items:center;gap:10px;margin-top:30px}.ctrl>button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:none}
+#cDots{display:flex;gap:10px;padding:0 8px}#cDots button{width:14px;height:14px;border-radius:50%;border:0;padding:0;background:var(--c);opacity:.4;transition:opacity .3s,transform .3s}#cDots button.on{opacity:1;transform:scale(1.35)}
+.prod{padding:120px var(--pad)}.head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+h2{font-size:clamp(34px,4.6vw,70px)}.head p{max-width:44ch;color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;background:var(--bg2)}
+.card .pic{display:grid;place-items:center;padding:26px;background:color-mix(in srgb,var(--c) 30%,var(--bg2))}.card .pic svg{width:46%}
+.card .in{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}.card h3{font-size:21px;letter-spacing:-.02em}.card small{color:var(--ink3);font-size:14px}
+.stock{height:4px;border-radius:2px;background:var(--line);margin-top:8px}.stock i{display:block;height:100%;border-radius:2px;background:var(--green)}
+.card .f{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px;font:600 16px var(--disp)}
+.add{border:1px solid var(--line);background:none;border-radius:999px;padding:7px 14px;font:600 14px var(--disp)}.add:hover{background:var(--ink);color:var(--bg)}
+.atl{padding:120px var(--pad) 80px;border-top:1px solid var(--line)}.atl .g{display:grid;grid-template-columns:1fr 1fr;gap:var(--pad)}
+.atl .lead{margin-top:24px}.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:20px 0;border-top:1px solid var(--line);counter-increment:s}
+.steps li::before{content:counter(s);font:800 22px var(--disp);color:var(--cherry)}.steps h3{font-size:22px;letter-spacing:-.02em;margin-bottom:6px}.steps p{color:var(--ink2);font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px;margin-top:80px}
+.stats b{display:block;font:800 clamp(48px,6vw,92px)/1 var(--disp);letter-spacing:-.05em}.stats span{color:var(--ink3);font-size:15px}
+.mq{overflow:hidden;margin:80px calc(-1*var(--pad)) 0;padding:20px 0;border-block:1px solid var(--line)}
+.mq div{display:flex;gap:28px;align-items:center;width:max-content;animation:mq 40s linear infinite;font:600 26px var(--disp);letter-spacing:-.02em;white-space:nowrap}
+.mq i{width:9px;height:14px;background:var(--cherry);border-radius:50%;transform:rotate(25deg)}@keyframes mq{to{transform:translateX(-50%)}}
+.contact{padding:100px var(--pad);background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;gap:var(--pad)}.contact .lead{margin-top:20px}
+.crow{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:16px 0;border-top:1px solid var(--line);text-decoration:none}.crow span{color:var(--ink3);font-size:15px}.crow b{font:600 18px var(--disp)}
+.news{margin-top:28px}.news label{display:block;margin-bottom:10px;color:var(--ink2)}.news .r{display:flex;gap:8px}
+.news input{flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.news button{border:0;border-radius:999px;padding:0 22px;background:var(--cherry);color:#fff;font:600 15px var(--disp)}.news p{min-height:1.6em;margin-top:8px;font-size:15px;color:var(--green)}
+.foot{padding:70px var(--pad) calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot .w{font:800 clamp(90px,26vw,420px)/.8 var(--disp);letter-spacing:-.07em;color:rgba(239,227,208,.07)}
+.foot .r{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:30px;color:var(--ink3);font-size:14px}
+.drawer{position:fixed;inset:0;z-index:40;visibility:hidden}.drawer.open{visibility:visible}
+.scrim{position:absolute;inset:0;background:rgba(0,0,0,.55);opacity:0;transition:opacity .3s}.open .scrim{opacity:1}
+.panel{position:absolute;inset:0 0 0 auto;width:min(420px,100%);background:var(--bg2);padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);overflow:auto}.open .panel{transform:none}
+.panel .t{display:flex;justify-content:space-between;align-items:center}.panel h3{font-size:30px}.x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none}
+#list{list-style:none;margin:20px 0;padding:0;flex:1}#list li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+#list b{display:block;font:600 17px var(--disp)}#list small{color:var(--ink3)}.qty{display:flex;align-items:center;gap:10px}.qty button{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:none}
+.empty{flex:1;color:var(--ink2)}.sum{display:flex;justify-content:space-between;font:600 17px var(--disp);padding:12px 0;border-top:1px solid var(--line)}
+.panel .btn{text-align:center}.note{margin-top:12px;font-size:14px;color:var(--ink3)}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font:600 14px var(--disp);transform:translate(-50%,160%);transition:transform .4s cubic-bezier(.16,1,.3,1)}.toast.on{transform:translate(-50%,0)}
+.toast button{border:0;border-radius:99px;padding:6px 12px;background:var(--bg);color:var(--ink);font:600 13px var(--disp)}
+@media(max-width:800px){.nav{display:none}.sticky{grid-template-columns:1fr;gap:10px;align-content:center;padding-top:84px}.lead{display:none}.bean{height:20vh}.curve{max-width:300px}.read b{font-size:30px}.read{gap:30px}.btn{margin-top:14px}.stages{margin-top:14px}.stages p{font-size:14px}
+.coll,.atl .g,.contact{grid-template-columns:1fr}.art{max-width:300px;margin:auto}.coll{padding-block:90px}.prod,.atl{padding-block:80px}}
+@media(prefers-reduced-motion:reduce){h1 span,.mq div,.swap>*{animation:none}html{scroll-behavior:auto}}
+</style></head>
+<body>
+<header class="hdr" id="hdr">
+<a class="brand" href="#top" aria-label="Telve ana sayfa"><svg viewBox="0 0 22 30" aria-hidden="true"><ellipse cx="11" cy="15" rx="8" ry="13" fill="#c2334a" transform="rotate(20 11 15)"/><path d="M9 3c-5 8 5 14 1 24" fill="none" stroke="#1a110e" stroke-width="1.6"/></svg>Telve</a>
+<nav class="nav" aria-label="Ana menü"><a href="#top">Kavrum</a><a href="#koleksiyon">Kahveler</a><a href="#urunler">Ürünler</a><a href="#atolye">Kavrumhane</a><a href="#iletisim">İletişim</a></nav>
+<button class="cart-btn" id="cartBtn" aria-label="Sepeti aç">Sepet <b id="cartN">0</b></button>
+</header>
+<main>
+<section class="roast" id="top"><div class="sticky">
+<div>
+<h1><span>Her partiden</span><span>yalnızca 60 kilo</span><span>kavuruyoruz</span></h1>
+<p class="lead">Yeşil çekirdeği küçük bir makinede, parti parti kavuruyoruz. Aşağı kaydırın; bir çekirdeğin 12 dakikada yeşilden koyuya nasıl döndüğünü izleyin.</p>
+<a class="btn" href="#koleksiyon">Kahveleri gör</a>
+<ol class="stages" id="stages">
+<li class="on"><h3>Kurutma ve sararma<small>20–150°C</small></h3><p>Çekirdek nemini bırakır, yeşilden saman sarısına döner. Koku henüz ekmek ile kesilmiş çimen arasındadır.</p></li>
+<li><h3>Kahverengileşme<small>150–190°C</small></h3><p>Şekerler ve proteinler tepkimeye girer; kavrum kokusu ve rengi bu aşamada oluşur.</p></li>
+<li><h3>Çatlama<small>190°C ve üstü</small></h3><p>Çekirdek patlamış mısır gibi çatlar. Açık kavrum burada durur; devam edersek yağlar yüzeye çıkar ve koyu kavrum başlar.</p></li>
+</ol></div>
+<div class="viz">
+<svg class="bean" id="bean" viewBox="0 0 200 260" role="img" aria-label="Kavrulan çekirdek"><ellipse class="b" cx="100" cy="130" rx="78" ry="112" transform="rotate(18 100 130)"/><ellipse cx="78" cy="84" rx="20" ry="48" fill="#fff" opacity=".1" transform="rotate(18 78 84)"/><path d="M96 26C66 92 134 150 104 236" fill="none" stroke="#000" stroke-opacity=".38" stroke-width="7" stroke-linecap="round"/></svg>
+<svg class="curve" viewBox="0 0 400 160" aria-hidden="true"><path d="M0 150C60 150 90 70 200 60S340 30 400 16" fill="none" stroke="rgba(239,227,208,.16)" stroke-width="3"/><path id="curve" d="M0 150C60 150 90 70 200 60S340 30 400 16" fill="none" stroke="#c2334a" stroke-width="3" stroke-linecap="round"/><circle id="dot" r="6" cx="0" cy="150" fill="#efe3d0"/></svg>
+<div class="read"><div><b id="clock">00:00</b><span>dakika</span></div><div><b id="temp">20°C</b><span>sıcaklık</span></div></div>
+</div></div></section>
+
+<section class="coll" id="koleksiyon">
+<div class="art" id="cArt"></div>
+<div id="cMain">
+<p class="cnt"><b id="cIdx">01</b> / 05</p>
+<div class="swap" id="cSwap"><h2 id="cName"></h2><p id="cOrigin"></p><p id="cDesc"></p>
+<dl><div class="row"><dt>Burun</dt><dd id="cNose"></dd></div><div class="row"><dt>Ağız</dt><dd id="cTaste"></dd></div><div class="row"><dt>Bitiş</dt><dd id="cEnd"></dd></div></dl></div>
+<div class="lvl">Kavrum<div id="cLvl"><i></i><i></i><i></i><i></i><i></i></div><span id="cLvlN"></span></div>
+<div class="buy"><strong id="cPrice"></strong><button class="btn" id="cBuy">Sepete ekle</button></div>
+<div class="ctrl"><button id="cPrev" aria-label="Önceki kahve">←</button><div id="cDots"></div><button id="cNext" aria-label="Sonraki kahve">→</button></div>
+</div></section>
+
+<section class="prod" id="urunler">
+<div class="head"><h2>Beş kahve, hepsi 250 g</h2><p>Her partiden 60 kilo kavuruyoruz; biten parti yeniden yapılmıyor. Siparişler iki iş günü içinde kargoya verilir.</p></div>
+<div class="cards" id="cards"></div></section>
+
+<section class="atl" id="atolye">
+<div class="g"><div><h2>Adımızı fincanın dibinde kalandan aldık.</h2>
+<p class="lead">Telve, fincanın dibinde kalan tortu; fal da ondan bakılır. Biz de her partinin sonunda dibe bakıyoruz: az kavuruyor, acele etmiyoruz.</p></div>
+<ol class="steps">
+<li><div><h3>Seçim</h3><p>Çekirdekleri doğrudan üreticilerden alıyoruz ve her parti için küçük bir lot seçiyoruz.</p></div></li>
+<li><div><h3>Kavrum</h3><p>60 kiloluk partilerin her biri kendi eğrisiyle kavrulur; sıcaklığı dakika dakika kaydediyoruz.</p></div></li>
+<li><div><h3>Dinlenme</h3><p>Kavrulan kahve yedi gün gaz salıp dinleniyor. İlk fincanınız bu yüzden bir hafta sonra.</p></div></li>
+<li><div><h3>Paketleme</h3><p>Paketler elle doldurulur; kavrum tarihi ve parti numarası üzerine yazılır.</p></div></li></ol></div>
+<div class="stats"><div><b data-n="60">0</b><span>kilo / parti</span></div><div><b data-n="12">0</b><span>dakika kavrum</span></div><div><b data-n="7">0</b><span>gün dinlenme</span></div><div><b data-n="5">0</b><span>kahve</span></div></div>
+<div class="mq" aria-hidden="true"><div id="mq"></div></div></section>
+
+<section class="contact" id="iletisim">
+<div><h2>Bir paket ayırtın ya da kavrumhaneye uğrayın.</h2><p class="lead">Sorularınız, özel siparişleriniz ve kavrumhane ziyaretleri için bize yazın. Genellikle aynı gün dönüyoruz.</p></div>
+<div><a class="crow" href="mailto:merhaba@telve.example"><span>E-posta</span><b>merhaba@telve.example</b></a>
+<div class="crow"><span>Adres</span><b>Kadıköy, İstanbul</b></div><div class="crow"><span>Saatler</span><b>Salı–Cumartesi, 10:00–18:00</b></div>
+<form class="news" id="news" novalidate><label for="em">Yeni parti çıktığında haber verelim.</label><div class="r"><input id="em" type="email" placeholder="E-posta adresiniz" autocomplete="email" required><button type="submit">Haber ver</button></div><p id="nm" role="status"></p></form></div>
+</section>
+</main>
+<footer class="foot"><div class="w" aria-hidden="true">Telve</div><div class="r"><span>© 2026 Telve</span><span>Çekirdekler ve paketler fotoğraf değil, SVG ile çizildi.</span><a href="#top">Başa dön ↑</a></div></footer>
+
+<div class="drawer" id="drawer" aria-hidden="true"><div class="scrim" data-x></div>
+<aside class="panel" role="dialog" aria-modal="true" aria-labelledby="ct"><div class="t"><h3 id="ct">Sepet</h3><button class="x" data-x aria-label="Sepeti kapat">✕</button></div>
+<ul id="list"></ul><p class="empty" id="empty">Sepetiniz şimdilik boş.</p>
+<div id="foot"><div class="sum"><span>Ara toplam</span><strong id="sub">0 TL</strong></div><div class="sum"><span>Kargo</span><span>Ücretsiz</span></div><a class="btn" id="co" href="#">Siparişi tamamla</a><p class="note">Sipariş e-posta ile alınır; ödeme bilgisi istenmez.</p></div></aside></div>
+<div class="toast" id="toast" role="status"><span id="tt"></span><button id="tv">Sepeti gör</button></div>
+
+<script>
+const C=[
+{id:'yirgacheffe',name:'Yirgacheffe Çiçek',short:'YİRGA',origin:'Etiyopya, Gedeo, 1.900 m',process:'yıkanmış',level:1,desc:'Çayı andıran hafif gövde, çiçeksi bir koku. Sabah ilk fincan için kavurduk.',nose:'Yasemin, bergamot',taste:'Şeftali, limonlu çay',end:'Uzun ve ferah',price:640,stock:42,bag:'#e4c06a',ink:'#2a1a10'},
+{id:'nyeri',name:'Nyeri Kuş Üzümü',short:'NYERİ',origin:'Kenya, Nyeri, 1.750 m',process:'yıkanmış',level:2,desc:'Parlak ve keskin. Asiditeyi seviyorsanız bu paket sizin için.',nose:'Frenk üzümü, domates dalı',taste:'Siyah çay, kızılcık',end:'Keskin ve parlak',price:680,stock:8,bag:'#b7243b',ink:'#f6e7d6'},
+{id:'huila',name:'Huila Karamel',short:'HUİLA',origin:'Kolombiya, Huila, 1.700 m',process:'yıkanmış',level:3,desc:'Dengeli ve yumuşak. Filtre kahvede de sütlü kahvede de iyi çalışır.',nose:'Karamel, kakao',taste:'Kırmızı elma, fındık',end:'Yumuşak ve tatlı',price:560,stock:31,bag:'#c8743a',ink:'#24130b'},
+{id:'cerrado',name:'Cerrado Fındık',short:'CERRADO',origin:'Brezilya, Cerrado, 1.100 m',process:'doğal',level:4,desc:'Düşük asiditeli, dolgun ve kuru. Moka potu için ideal.',nose:'Kavrulmuş fındık',taste:'Bitter çikolata, tütün',end:'Kuru ve uzun',price:520,stock:57,bag:'#4d6b4a',ink:'#f1e6d2'},
+{id:'gece',name:'Gece Vardiyası',short:'GECE',origin:'Üç ülkeden harman',process:'harman',level:5,desc:'En koyu kavrumumuz. Espresso için, sütle de ezilmeden kalır.',nose:'Melas, kara kiraz',taste:'Espresso, bitter kakao',end:'Yoğun ve dumanlı',price:540,stock:24,bag:'#2a2f4a',ink:'#efdcc0'}];
+const L=['Açık','Orta-açık','Orta','Orta-koyu','Koyu'],$=(s)=>document.querySelector(s),$$=(s)=>[...document.querySelectorAll(s)],fmt=n=>n.toLocaleString('tr-TR')+' TL';
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const bag=p=>`<svg viewBox="0 0 160 220" role="img" aria-label="${p.name} paketi"><path d="M20 30h120l8 175H12z" fill="${p.bag}"/><path d="M20 30h120l1.5 14h-123z" fill="#000" opacity=".25"/><circle cx="80" cy="104" r="34" fill="none" stroke="${p.ink}" stroke-width="1.6"/><ellipse cx="80" cy="104" rx="10" ry="17" fill="${p.ink}" transform="rotate(22 80 104)"/><text x="80" y="168" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="16" fill="${p.ink}">${p.short}</text><text x="80" y="188" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-size="11" fill="${p.ink}" opacity=".75">250 g</text></svg>`;
+/* Kavrum */
+const st=[[0,[147,163,92]],[.28,[214,184,92]],[.5,[170,112,58]],[.75,[96,55,33]],[1,[34,20,14]]];
+const col=t=>{for(let i=1;i<st.length;i++)if(t<=st[i][0]){const[a,x]=st[i-1],[b,y]=st[i],k=(t-a)/(b-a);return'rgb('+x.map((v,j)=>Math.round(v+(y[j]-v)*k)).join()+')'}return'rgb(34,20,14)'};
+const roast=$('#top'),bean=$('#bean'),cv=$('#curve'),dot=$('#dot'),len=cv.getTotalLength(),stg=$$('#stages li');
+cv.style.strokeDasharray=len;
+function tick(){const r=roast.getBoundingClientRect(),t=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
+bean.style.setProperty('--bean',col(t));bean.style.transform=`rotate(${t*50}deg) scale(${.86+t*.22})`;
+cv.style.strokeDashoffset=len*(1-t);const p=cv.getPointAtLength(t*len);dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);
+const s=Math.round(t*720);$('#clock').textContent=String(s/60|0).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+$('#temp').textContent=Math.round(20+210*(150-p.y)/134)+'°C';
+const k=t<.45?0:t<.78?1:2;stg.forEach((e,i)=>e.classList.toggle('on',i===k));$('#hdr').classList.toggle('solid',scrollY>40)}
+addEventListener('scroll',tick,{passive:true});addEventListener('resize',tick);tick();
+/* Koleksiyon */
+let cur=0;
+$('#cDots').innerHTML=C.map((p,i)=>`<button style="--c:${p.bag}" data-i="${i}" aria-label="${p.name}"></button>`).join('');
+function show(i){cur=(i+C.length)%C.length;const p=C[cur];$('#koleksiyon').style.setProperty('--c',p.bag);$('#cArt').innerHTML=bag(p);
+$('#cIdx').textContent='0'+(cur+1);$('#cName').textContent=p.name;$('#cOrigin').textContent=p.origin+', '+p.process;$('#cDesc').textContent=p.desc;
+$('#cNose').textContent=p.nose;$('#cTaste').textContent=p.taste;$('#cEnd').textContent=p.end;$('#cPrice').textContent=fmt(p.price);$('#cLvlN').textContent=L[p.level-1];
+$$('#cLvl i').forEach((e,j)=>e.classList.toggle('on',j<p.level));$$('#cDots button').forEach((b,j)=>b.classList.toggle('on',j===cur));
+const s=$('#cSwap');s.classList.remove('swap');void s.offsetWidth;s.classList.add('swap')}
+$('#cPrev').onclick=()=>show(cur-1);$('#cNext').onclick=()=>show(cur+1);$('#cDots').onclick=e=>{const b=e.target.closest('button');if(b)show(+b.dataset.i)};$('#cBuy').onclick=()=>add(C[cur].id);
+/* Ürünler */
+$('#cards').innerHTML=C.map(p=>`<article class="card" style="--c:${p.bag}"><div class="pic">${bag(p)}</div><div class="in"><h3>${p.name}</h3><small>${p.origin}</small><div class="stock" title="Kalan ${p.stock} paket"><i style="width:${p.stock/60*100}%"></i></div><small>Kalan ${p.stock} paket</small><div class="f"><span>${fmt(p.price)}</span><button class="add" data-a="${p.id}">Sepete ekle</button></div></div></article>`).join('');
+$('#cards').onclick=e=>{const b=e.target.closest('[data-a]');if(b)add(b.dataset.a)};
+/* Sepet */
+const cart={},dr=$('#drawer');let tm;
+function add(id,n=1){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];draw();if(n>0){$('#tt').textContent=C.find(p=>p.id===id).name+' sepete eklendi';$('#toast').classList.add('on');clearTimeout(tm);tm=setTimeout(()=>$('#toast').classList.remove('on'),3200)}}
+function draw(){const ids=Object.keys(cart);let n=0,sum=0,lines=[];
+$('#list').innerHTML=ids.map(id=>{const p=C.find(x=>x.id===id),q=cart[id];n+=q;sum+=q*p.price;lines.push('- '+q+' × '+p.name+' (250 g)');return`<li><div><b>${p.name}</b><small>250 g, ${fmt(p.price)}</small></div><div class="qty"><button data-a="${id}" data-d="-1" aria-label="Azalt">−</button><span>${q}</span><button data-a="${id}" data-d="1" aria-label="Arttır">+</button></div></li>`}).join('');
+$('#cartN').textContent=n;$('#empty').hidden=n>0;$('#foot').hidden=n===0;$('#sub').textContent=fmt(sum);
+$('#co').href='mailto:merhaba@telve.example?subject='+encodeURIComponent('Sipariş, '+n+' paket')+'&body='+encodeURIComponent('Merhaba Telve,\n\nŞu kahveleri sipariş etmek istiyorum:\n'+lines.join('\n')+'\n\nToplam: '+fmt(sum)+'\n\nAd soyad:\nTelefon:\nTeslimat adresi:\n')}
+$('#list').onclick=e=>{const b=e.target.closest('[data-d]');if(b)add(b.dataset.a,+b.dataset.d)};
+const open=v=>{dr.classList.toggle('open',v);dr.setAttribute('aria-hidden',!v);if(v)dr.querySelector('.x').focus();else $('#cartBtn').focus()};
+$('#cartBtn').onclick=()=>open(true);$('#tv').onclick=()=>{$('#toast').classList.remove('on');open(true)};dr.onclick=e=>{if(e.target.closest('[data-x]'))open(false)};
+addEventListener('keydown',e=>{if(e.key==='Escape'&&dr.classList.contains('open'))open(false)});
+/* Diğer */
+const w=['Yasemin','bergamot','şeftali','karamel','kakao','frenk üzümü','fındık','bitter çikolata','melas','kara kiraz','tütün','kızılcık'],m=w.map(x=>`<span>${x}</span><i></i>`).join('');$('#mq').innerHTML=m+m;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const el=e.target,n=+el.dataset.n,d=reduce?0:1200,t0=performance.now();(function f(t){const k=d?Math.min(1,(t-t0)/d):1;el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});$$('[data-n]').forEach(e=>io.observe(e));
+$('#news').onsubmit=e=>{e.preventDefault();const v=$('#em').value.trim(),ok=/^\S+@\S+\.\S+$/.test(v);$('#nm').style.color=ok?'':'#e0707f';$('#nm').textContent=ok?'Teşekkürler, yeni parti çıkınca size yazacağız.':'Geçerli bir e-posta adresi yazın.';if(ok)e.target.reset()};
+show(0);draw();
+</script>
+</body></html>
